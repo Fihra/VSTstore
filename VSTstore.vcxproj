@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Plugin.cpp" />
     <ClCompile Include="VSTstore.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Plugin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
