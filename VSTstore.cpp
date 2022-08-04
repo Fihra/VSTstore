@@ -54,6 +54,28 @@ std::vector<Plugin> FilterPlugins(std::vector<Plugin> allPlugins, std::string pl
     }
 }
 
+void ViewMyCart()
+{
+    if (myCart.size() <= 0)
+    {
+        std::cout << "Cart is empty." << std::endl;
+    }
+    else
+    {
+        float currentTotal = 0;
+        int index = 1;
+        for (auto product : myCart)
+        {
+            std::cout << "[" << index << "] " << product.ShowName() << std::endl;
+            std::cout << "$" << product.ShowPrice() << std::endl;
+            std::cout << std::endl;
+            currentTotal += product.ShowPrice();
+            index++;
+        }
+        std::cout << "Total: $" << currentTotal;
+    }
+}
+
 void AddToCart(Plugin plugin)
 {
     myCart.push_back(plugin);
@@ -139,22 +161,7 @@ int main()
             switch (choiceInput)
             {
             case 1:
-                if (myCart.size() <= 0)
-                {
-                    std::cout << "Cart is empty." << std::endl;
-                } 
-                else
-                { 
-                    float currentTotal = 0;
-                    for (auto product : myCart)
-                    {
-                        std::cout << "- " << product.ShowName() << std::endl;
-                        std::cout << "$" << product.ShowPrice() << std::endl;
-                        std::cout << std::endl;
-                        currentTotal += product.ShowPrice();
-                    }
-                    std::cout << "Total: $" << currentTotal;
-                }
+                ViewMyCart();
                 break;
             case 2:
                 DisplayPlugins(plugins);
