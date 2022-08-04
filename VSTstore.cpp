@@ -5,6 +5,8 @@
 #include <vector>
 #include "Plugin.h"
 
+std::vector<Plugin> myCart;
+ 
 void MainMenu()
 {
     std::cout << "[1] View Cart" << std::endl;
@@ -52,6 +54,11 @@ std::vector<Plugin> FilterPlugins(std::vector<Plugin> allPlugins, std::string pl
     }
 }
 
+void AddToCart(Plugin plugin)
+{
+    myCart.push_back(plugin);
+}
+
 void DisplayPlugins(std::vector<Plugin> pluginProducts)
 {
     ShowPluginTypesMenu();
@@ -97,19 +104,13 @@ void DisplayPlugins(std::vector<Plugin> pluginProducts)
     std::cout << "Which item would you like to add to your cart [Enter Number]: ";
     std::cin >> productChoice;
 
+    AddToCart(showPlugins[productChoice - 1]);
 
-
-
-}
-
-void AddToCart(std::vector<Plugin> cart, Plugin plugin)
-{
 
 }
 
 int main()
 {
-    std::vector<Plugin> myCart;
     std::vector<Plugin> plugins;
     Plugin plugin1("Wavetable Synth", (float)99.99, "instrument");
     Plugin plugin2("Equalizer", (float)35.99, "signal processor");
@@ -143,7 +144,7 @@ int main()
                     std::cout << "Cart is empty." << std::endl;
                 } 
                 else
-                {
+                { 
                     float currentTotal = 0;
                     for (auto product : myCart)
                     {
